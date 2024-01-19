@@ -22,7 +22,21 @@ searchInput.addEventListener("keyup", searchHandler);
 // add event to butttons
 const filterHandler = (event) => {
   const filter = event.target.dataset.filter;
-  console.log(filter);
+  products.forEach((product) => {
+    const category = product.dataset.category;
+    if (filter === "all") {
+      product.style.display = "block";
+    } else {
+      filter === category
+        ? (product.style.display = "block")
+        : (product.style.display = "none");
+      //   if (filter === category) {
+      //     product.style.display = "block";
+      //   } else {
+      //     product.style.display = "none";
+      //   }
+    }
+  });
 };
 
 buttons.forEach((button) => {
