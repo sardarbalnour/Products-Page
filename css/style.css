@@ -101,3 +101,10 @@ margin-left: 10px;
         
     }
 }
+
+/* add style to selected buttons */
+    .selected{
+    background-color:#f6f6f7;
+    border: 2px solid #4F6F52;
+    color: #4F6F52;
+}
