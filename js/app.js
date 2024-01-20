@@ -1,6 +1,12 @@
 const searchInput = document.getElementById("search-input");
 const products = document.querySelectorAll(".product-item");
 const buttons = document.querySelectorAll(".filter");
+// const priceDiv = document.getElementById("search-price");
+// const priceButton = priceDiv.querySelector("button");
+// instead of these codes we use chaining
+const priceButton = document
+  .getElementById("search-price")
+  .querySelector("button");
 
 // add style to selected buttons
 const changeClass = (filter) => {
@@ -19,7 +25,6 @@ const searchHandler = (event) => {
 
   products.forEach((product) => {
     const productName = product.children[1].innerText.toLowerCase();
-    console.dir(productName);
     if (productName.includes(searchValue)) {
       product.style.display = "block";
     } else {
@@ -55,3 +60,11 @@ const filterHandler = (event) => {
 buttons.forEach((button) => {
   button.addEventListener("click", filterHandler);
 });
+
+// getting searched price
+const searchPriceHandler = (event) => {
+  const searchPrice = event.target.parentElement.children[0].value;
+  console.log(searchPrice);
+};
+
+priceButton.addEventListener("click", searchPriceHandler);
