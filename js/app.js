@@ -63,8 +63,20 @@ buttons.forEach((button) => {
 
 // getting searched price
 const searchPriceHandler = (event) => {
-  const searchPrice = event.target.parentElement.children[0].value;
-  console.log(searchPrice);
+  const searchPrice = +event.target.parentElement.children[0].value;
+  // filter prudocts by searched price
+  products.forEach((product) => {
+    const productPrice = product.children[2].innerText;
+    const finalPrice = +productPrice.split(" ")[1];
+    // agar hich meqdari vared nakarde bashe karbar ya sefr bashe ke har do falsy hastand :
+    if (!searchPrice) {
+      product.style.display = "block";
+    } else {
+      searchPrice === finalPrice
+        ? (product.style.display = "block")
+        : (product.style.display = "none");
+    }
+  });
 };
 
 priceButton.addEventListener("click", searchPriceHandler);
