@@ -33,8 +33,6 @@ const searchHandler = (event) => {
   });
 };
 
-searchInput.addEventListener("keyup", searchHandler);
-
 // add event to butttons
 const filterHandler = (event) => {
   const filter = event.target.dataset.filter;
@@ -57,10 +55,6 @@ const filterHandler = (event) => {
   });
 };
 
-buttons.forEach((button) => {
-  button.addEventListener("click", filterHandler);
-});
-
 // getting searched price
 const searchPriceHandler = (event) => {
   const searchPrice = +event.target.parentElement.children[0].value;
@@ -79,4 +73,12 @@ const searchPriceHandler = (event) => {
   });
 };
 
-priceButton.addEventListener("click", searchPriceHandler);
+// better performance
+const strat = () => {
+  buttons.forEach((button) => {
+    button.addEventListener("click", filterHandler);
+  });
+  priceButton.addEventListener("click", searchPriceHandler);
+  searchInput.addEventListener("keyup", searchHandler);
+};
+window.addEventListener("load", strat);
